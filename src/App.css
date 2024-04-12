@@ -1,1 +1,8 @@
-
+.popup{
+  margin-top: 40px;
+  border: 1px solid black;
+  width: 200px;
+}
+.hidden{
+  display: none;
+}
