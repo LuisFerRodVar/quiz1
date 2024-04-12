@@ -5,6 +5,9 @@ function App() {
   const [name, setName] = useState("");
   const [likes, setLikes] = useState(0);
   const [popupVisible, setPopupVisible] = useState(true);
+  const [firstValue, setFirstValue] = useState(0);
+  const [secondValue, setSecondValue] = useState(0);
+  const [result, setResult] = useState(0);
 
   function modifyLikes(operation) {
     setLikes(likes + operation);
@@ -12,6 +15,21 @@ function App() {
   const handleChange = (event) => {
     setName(event.target.value);
   };
+  const handleFirstValue = (event) =>{
+    setFirstValue(event.target.value);
+  }
+  const handleSecondValue = (event) =>{
+    setSecondValue(event.target.value);
+  }
+  function add(){
+    setResult(parseInt(firstValue) + parseInt(secondValue));
+  }
+  function sub(){
+    setResult(parseInt(firstValue) - parseInt(secondValue));
+  }
+  function reset(){
+    setResult(0);
+  }
 
   const togglePopup = () => {
     setPopupVisible(!popupVisible);
@@ -34,7 +52,13 @@ function App() {
       ) : (
         <input className='button__open' type='button' value='abrir' onClick={togglePopup} />
       )}
-
+      <h1 className='title'>Actividad el contador </h1>
+      <input className='values' type='number' onChange={handleFirstValue} />
+      <input className='values' type='number' onChange={handleSecondValue} />  
+      <input value='sumar' type='button' onClick={() => add()} />
+      <input value='restar' type='button' onClick={() => sub()} />
+      <input value='resetar' type='button' onClick={() => reset()} />
+      <h1>El resultado es: {result}</h1>
     </>
 
   );
